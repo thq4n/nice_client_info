@@ -1,7 +1,8 @@
 name: nice_client_info
 description: Nice client info package that supports storing device-id into the keychain.
 version: 0.0.1
-homepage:
+homepage: https://github.com/phanbaohuy96
+repository: https://github.com/phanbaohuy96/nice_client_info
 
 environment:
   sdk: '>=2.17.0 <3.0.0'
