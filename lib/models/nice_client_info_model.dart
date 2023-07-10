@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class NiceClientInfo {
   /// DEVICE-INFO
 
@@ -36,4 +38,33 @@ class NiceClientInfo {
 
   // like 1.0.0(1)
   String get appVersion => '$appVersionName($appVersionCode)';
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'model': model,
+      'osversion': osversion,
+      'identifier': identifier,
+      'appVersionName': appVersionName,
+      'appVersionCode': appVersionCode,
+      'appName': appName,
+      'packageName': packageName,
+    };
+  }
+
+  factory NiceClientInfo.fromMap(Map<String, dynamic> map) {
+    return NiceClientInfo(
+      model: map['model'] as String,
+      osversion: map['osversion'] as String,
+      identifier: map['identifier'] as String,
+      appVersionName: map['appVersionName'] as String,
+      appVersionCode: map['appVersionCode'] as String,
+      appName: map['appName'] as String,
+      packageName: map['packageName'] as String,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory NiceClientInfo.fromJson(String source) =>
+      NiceClientInfo.fromMap(json.decode(source) as Map<String, dynamic>);
 }
