@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import '../services/keychain_service_unsupported.dart'
-    if (dart.library.io) '../services/keychain_service.dart'
-    if (dart.library.html) '../services/keychain_service_unsupported.dart';
+import '../services/keychain/keychain_service_unsupported.dart'
+    if (dart.library.io) '../services/keychain/keychain_service.dart'
+    if (dart.library.html) '../services/keychain/keychain_service_unsupported.dart';
 
 class KeyChainUtil {
   static Future<String?> getStorageDeviceId({

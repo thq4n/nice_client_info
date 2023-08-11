@@ -1,3 +1,7 @@
+## 1.0.3
+
+* Change to using from device_info to device_info_plus
+
 ## 1.0.2
 
 * Add `enableKeyChainStorage` into setup
