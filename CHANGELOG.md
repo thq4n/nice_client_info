@@ -1,4 +1,8 @@
-## 1.0.0
+## 1.0.2
+
+* Add `enableKeyChainStorage` into setup
+
+## 1.0.1
 
 * Add json serializable method to NiceClientInfo
 

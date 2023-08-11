@@ -10,7 +10,7 @@ class NiceClientInfo {
   final String osversion;
 
   /// unique device identifier
-  final String identifier;
+  final String? identifier;
 
   /// APP-INFO
 

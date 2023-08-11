@@ -7,13 +7,13 @@ import 'package:device_info/device_info.dart';
 import 'package:package_info/package_info.dart';
 
 import 'models/nice_client_info_model.dart';
-import 'storage/keychain_storage.dart';
+
+import 'utils/keychain_utils.dart';
 
 export 'package:device_info/device_info.dart';
 export 'package:package_info/package_info.dart';
 
 export 'models/nice_client_info_model.dart';
-export 'storage/keychain_storage.dart';
 
 /// A Calculator.
 class NiceClientInfoPlugin {
@@ -31,7 +31,9 @@ class NiceClientInfoPlugin {
 
   NiceClientInfoPlugin._();
 
-  Future<NiceClientInfoPlugin> setup() async {
+  Future<NiceClientInfoPlugin> setup({
+    bool enableKeyChainStorage = true,
+  }) async {
     final deviceInfo = DeviceInfoPlugin();
     final result = await Future.wait([
       if (Platform.isAndroid) deviceInfo.androidInfo,
@@ -51,8 +53,10 @@ class NiceClientInfoPlugin {
       final appName = pInfo.appName;
       final packageName = pInfo.packageName;
 
-      final storageDeviceId =
-          await KeychangeStorageUtils.getDeviceId(packageName);
+      final storageDeviceId = await KeyChainUtil.getStorageDeviceId(
+        packageName: packageName,
+        enableKeyChainStorage: enableKeyChainStorage,
+      );
 
       if (Platform.isAndroid) {
         final androidInfo = result[0] as AndroidDeviceInfo;
@@ -66,7 +70,13 @@ class NiceClientInfoPlugin {
         identifier = storageDeviceId ?? iosInfo.identifierForVendor;
       }
 
-      unawaited(KeychangeStorageUtils.setDeviceId(packageName, identifier));
+      unawaited(
+        KeyChainUtil.storageDeviceId(
+          packageName: packageName,
+          enableKeyChainStorage: enableKeyChainStorage,
+          identifier: identifier,
+        ),
+      );
 
       _info = NiceClientInfo(
         model: model,

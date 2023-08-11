@@ -1,6 +1,6 @@
 import 'package:flutter_keychain/flutter_keychain.dart';
 
-class KeychangeStorageUtils {
+class KeychainService {
   static Future<String?> getDeviceId(String packageName) {
     return FlutterKeychain.get(key: '${packageName}_device_id');
   }
