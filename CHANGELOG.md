@@ -1,4 +1,4 @@
-## 1.0.5
+## 2.0.0
 
 * Remove device id. Please visit to easy_device_id.
 
