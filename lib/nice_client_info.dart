@@ -7,7 +7,6 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'models/nice_client_info_model.dart';
 
 import 'services/device_info/device_info_service.dart';
-import 'utils/keychain_utils.dart';
 
 export 'package:device_info_plus/device_info_plus.dart';
 export 'package:package_info_plus/package_info_plus.dart';
@@ -29,9 +28,7 @@ class NiceClientInfoPlugin {
 
   NiceClientInfoPlugin._();
 
-  Future<NiceClientInfoPlugin> setup({
-    bool enableKeyChainStorage = true,
-  }) async {
+  Future<NiceClientInfoPlugin> setup() async {
     final deviceInfo = DeviceInfoService();
     final result = await Future.wait(
       [
@@ -49,25 +46,9 @@ class NiceClientInfoPlugin {
       final appName = pInfo.appName;
       final packageName = pInfo.packageName;
 
-      final storageDeviceId = await KeyChainUtil.getStorageDeviceId(
-        packageName: packageName,
-        enableKeyChainStorage: enableKeyChainStorage,
-      );
-
-      if ((simplifyDeviceInfo.identifier ?? storageDeviceId) != null) {
-        unawaited(
-          KeyChainUtil.storageDeviceId(
-            packageName: packageName,
-            enableKeyChainStorage: enableKeyChainStorage,
-            identifier: (simplifyDeviceInfo.identifier ?? storageDeviceId)!,
-          ),
-        );
-      }
-
       _info = NiceClientInfo(
         model: simplifyDeviceInfo.model,
         osversion: simplifyDeviceInfo.osversion,
-        identifier: simplifyDeviceInfo.identifier,
         appVersionName: appVersionName,
         appVersionCode: appVersionCode,
         appName: appName,

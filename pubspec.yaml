@@ -1,5 +1,5 @@
 name: nice_client_info
-description: Nice client info package that supports storing device-id into the keychain.
+description: Nice client info package that provide some device info and app info
 version: 1.0.4
 homepage: https://github.com/phanbaohuy96
 repository: https://github.com/phanbaohuy96/nice_client_info
@@ -12,7 +12,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_keychain: ^2.2.1
   device_info_plus: ^9.0.3
   package_info_plus: ^4.1.0
 

@@ -69,12 +69,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: onIdentifier,
-                    child: const Text(
-                      'Get Identifier Info',
-                    ),
-                  ),
-                  ElevatedButton(
                     onPressed: onAppVersionName,
                     child: const Text(
                       'Get App Version Name Info',
@@ -129,10 +123,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void onOSVersion() {
     showPopup(plugin?.info.osversion);
-  }
-
-  void onIdentifier() {
-    showPopup(plugin?.info.identifier);
   }
 
   void onAppVersionName() {

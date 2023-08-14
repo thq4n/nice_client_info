@@ -9,9 +9,6 @@ class NiceClientInfo {
   /// device osversion
   final String osversion;
 
-  /// unique device identifier
-  final String? identifier;
-
   /// APP-INFO
 
   /// build name
@@ -29,7 +26,6 @@ class NiceClientInfo {
   NiceClientInfo({
     required this.model,
     required this.osversion,
-    required this.identifier,
     required this.appVersionName,
     required this.appVersionCode,
     required this.appName,
@@ -43,7 +39,6 @@ class NiceClientInfo {
     return <String, dynamic>{
       'model': model,
       'osversion': osversion,
-      'identifier': identifier,
       'appVersionName': appVersionName,
       'appVersionCode': appVersionCode,
       'appName': appName,
@@ -55,7 +50,6 @@ class NiceClientInfo {
     return NiceClientInfo(
       model: map['model'] as String,
       osversion: map['osversion'] as String,
-      identifier: map['identifier'] as String,
       appVersionName: map['appVersionName'] as String,
       appVersionCode: map['appVersionCode'] as String,
       appName: map['appName'] as String,

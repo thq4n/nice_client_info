@@ -1,3 +1,7 @@
+## 1.0.5
+
+* Remove device id. Please visit to easy_device_id.
+
 ## 1.0.4
 
 * Fix build web
