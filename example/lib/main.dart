@@ -35,12 +35,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   NiceClientInfoPlugin? plugin;
 
-  late Future initFuture;
-
   @override
   void initState() {
-    initFuture = _initPlugin();
-
     super.initState();
   }
 
@@ -53,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: FutureBuilder(
-          future: initFuture,
+          future: _initPlugin(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done &&
                 snapshot.data != null) {

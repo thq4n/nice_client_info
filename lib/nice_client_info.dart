@@ -2,7 +2,7 @@ library nice_client_info;
 
 import 'dart:async';
 
-import 'package:package_info/package_info.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import 'models/nice_client_info_model.dart';
 
@@ -10,7 +10,7 @@ import 'services/device_info/device_info_service.dart';
 import 'utils/keychain_utils.dart';
 
 export 'package:device_info_plus/device_info_plus.dart';
-export 'package:package_info/package_info.dart';
+export 'package:package_info_plus/package_info_plus.dart';
 
 export 'models/nice_client_info_model.dart';
 

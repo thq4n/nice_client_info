@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'package:flutter/foundation.dart';
 
 import '../services/keychain/keychain_service_unsupported.dart'
     if (dart.library.io) '../services/keychain/keychain_service.dart'
@@ -12,7 +12,8 @@ class KeyChainUtil {
     if (!enableKeyChainStorage) {
       return null;
     }
-    if (Platform.isAndroid || Platform.isIOS) {
+    if (defaultTargetPlatform == TargetPlatform.iOS ||
+        defaultTargetPlatform == TargetPlatform.android) {
       return KeychainService.getDeviceId(packageName);
     }
     return null;
@@ -26,7 +27,8 @@ class KeyChainUtil {
     if (!enableKeyChainStorage) {
       return Future.value(false);
     }
-    if (Platform.isAndroid || Platform.isIOS) {
+    if (defaultTargetPlatform == TargetPlatform.iOS ||
+        defaultTargetPlatform == TargetPlatform.android) {
       return KeychainService.setDeviceId(packageName, identifier);
     }
     return Future.value(false);
